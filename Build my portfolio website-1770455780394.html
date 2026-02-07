@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prabhakar Mehra - Automation Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#7c3aed',
+                        dark: '#0f172a',
+                        light: '#f8fafc',
+                        accent: '#f59e0b'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e2e8f0;
+            overflow: hidden;
+        }
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #2563eb, #7c3aed);
+        }
+        .social-icon:hover {
+            transform: translateY(-5px);
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #2563eb, #7c3aed);
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+        .experience-item {
+            position: relative;
+            padding-left: 30px;
+        }
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #2563eb;
+        }
+        .experience-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 22px;
+            width: 2px;
+            height: calc(100% + 20px);
+            background: #2563eb;
+        }
+        .experience-item:last-child::after {
+            display: none;
+        }
+        .expertise-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid #2563eb;
+        }
+        .expertise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-light text-dark">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-lg z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Prabhakar Mehra</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <button onclick="scrollToSection('home')" class="font-medium hover:text-primary transition-colors">Home</button>
+                    <button onclick="scrollToSection('about')" class="font-medium hover:text-primary transition-colors">About</button>
+                    <button onclick="scrollToSection('skills')" class="font-medium hover:text-primary transition-colors">Skills</button>
+                    <button onclick="scrollToSection('expertise')" class="font-medium hover:text-primary transition-colors">Expertise</button>
+                    <button onclick="scrollToSection('projects')" class="font-medium hover:text-primary transition-colors">Projects</button>
+                    <button onclick="scrollToSection('contact')" class="font-medium hover:text-primary transition-colors">Contact</button>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-toggle" class="text-gray-700">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <button onclick="scrollToSection('home')" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 w-full text-left">Home</button>
+                <button onclick="scrollToSection('about')" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 w-full text-left">About</button>
+                <button onclick="scrollToSection('skills')" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 w-full text-left">Skills</button>
+                <button onclick="scrollToSection('expertise')" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 w-full text-left">Expertise</button>
+                <button onclick="scrollToSection('projects')" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 w-full text-left">Projects</button>
+                <button onclick="scrollToSection('contact')" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 w-full text-left">Contact</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                        Hi, I'm <span class="text-accent">Prabhakar Mehra</span>
+                    </h1>
+                    <h2 class="text-xl md:text-2xl text-gray-200 mt-4">
+                        Automation Engineer & Servo Motion Control Specialist
+                    </h2>
+                    <p class="text-gray-300 mt-6 text-lg max-w-lg">
+                        9+ years experience in industrial automation with expertise in PLC programming, robotics, and servo control systems.
+                    </p>
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <button onclick="scrollToSection('expertise')" class="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105">
+                            View My Expertise
+                        </button>
+                        <button onclick="scrollToSection('contact')" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-all">
+                            Contact Me
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 bg-white rounded-full overflow-hidden border-4 border-white shadow-2xl">
+                            <img id="profileImage" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f0f0f0'/%3E%3Ccircle cx='100' cy='80' r='40' fill='%23cccccc'/%3E%3Crect x='50' y='120' width='100' height='60' rx='10' fill='%23cccccc'/%3E%3C/svg%3E" alt="Profile" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-black bg-opacity-50 rounded-full">
+                                <button onclick="openFileSelector()" class="bg-white text-gray-800 px-4 py-2 rounded-full font-semibold flex items-center">
+                                    <i class="fas fa-upload mr-2"></i> Change Image
+                                </button>
+                                <input type="file" id="imageUpload" accept="image/*" class="hidden" onchange="updateImage(this)">
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 bg-primary text-white px-6 py-2 rounded-full font-semibold shadow-lg">
+                            Available for work
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold section-title">About Me</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Learn more about my professional journey, experience, and expertise in automation and industrial systems.
+                </p>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-4">Professional Summary</h3>
+                    <p class="text-gray-700 mb-4">
+                        A result-oriented professional with 9 years of experience in Programming & Automation collaborating with project teams and deploying technology to build successful solutions for clients.
+                    </p>
+                    <p class="text-gray-700 mb-4">
+                        Good working experience on Special Purpose Machine, Robotic Cells (Mig welding, Spot welding & Pick and Place) & Conveyors.
+                    </p>
+                    <p class="text-gray-700 mb-6">
+                        Highly experienced in custom enveloped projects, system Integration, Production, Installation & Implementation, Maintenance & Customer Service.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>9+ Years Experience</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>15+ Projects Completed</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>Expert in PLC Programming</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>Robotic Systems Specialist</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-4">Organizational Experience</h3>
+                    <div class="space-y-6">
+                        <div class="experience-item">
+                            <h4 class="text-xl font-semibold">SMC Corporation India Pvt. Ltd. (Noida)</h4>
+                            <p class="text-gray-600">February 2024 – Present</p>
+                            <p class="text-gray-700 mt-2">
+                                Senior Automation Engineer specializing in PLC programming and robotic cell implementation.
+                            </p>
+                        </div>
+                        <div class="experience-item">
+                            <h4 class="text-xl font-semibold">Falcon Autotech Pvt. Ltd. (Noida)</h4>
+                            <p class="text-gray-600">June 2022 – February 2024</p>
+                            <p class="text-gray-700 mt-2">
+                                Automation Engineer with focus on conveyor systems and industrial automation solutions.
+                            </p>
+                        </div>
+                        <div class="experience-item">
+                            <h4 class="text-xl font-semibold">Kadence Automation Pvt. Ltd. (Faridabad)</h4>
+                            <p class="text-gray-600">March 2020 – May 2022</p>
+                            <p class="text-gray-700 mt-2">
+                                Automation Engineer working on custom machinery and control systems.
+                            </p>
+                        </div>
+                        <div class="experience-item">
+                            <h4 class="text-xl font-semibold">B.N.Hitech Pvt. Ltd. (Panchkula)</h4>
+                            <p class="text-gray-600">April 2019 – Feb 2020</p>
+                            <p class="text-gray-700 mt-2">
+                                Automation Specialist working on custom machinery and control systems.
+                            </p>
+                        </div>
+                        <div class="experience-item">
+                            <h4 class="text-xl font-semibold">Sensewell Instrument Pvt. Ltd. (Vadodara)</h4>
+                            <p class="text-gray-600">Feb 2017 – March 2019</p>
+                            <p class="text-gray-700 mt-2">
+                                Junior Automation Engineer focusing on instrumentation and automation concepts.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold section-title">Core Expertise</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Specialized skills and knowledge in servo motion control and industrial automation systems.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="expertise-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-location-arrow text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Position Control</h3>
+                    <p class="text-gray-600">
+                        Precise point-to-point control, homing, soft/hard limits for accurate positioning.
+                    </p>
+                </div>
+                <div class="expertise-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-tachometer-alt text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Speed Control</h3>
+                    <p class="text-gray-600">
+                        RPM regulation with smooth acceleration/deceleration profiles.
+                    </p>
+                </div>
+                <div class="expertise-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-bolt text-red-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Torque / Force Control</h3>
+                    <p class="text-gray-600">
+                        Press-fit, tightening operations, and overload protection systems.
+                    </p>
+                </div>
+                <div class="expertise-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-truck text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Transfer Motion</h3>
+                    <p class="text-gray-600">
+                        Load handling on vertical and horizontal axes for efficient material transfer.
+                    </p>
+                </div>
+                <div class="expertise-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-sync-alt text-yellow-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Synchronized Motion</h3>
+                    <p class="text-gray-600">
+                        Master-slave, camming, and multi-axis control for coordinated movements.
+                    </p>
+                </div>
+                <div class="expertise-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-tools text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Application Focus</h3>
+                    <p class="text-gray-600">
+                        Pick & place, conveyors, presses, robotic cells, camera positioning, assembly machines.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold section-title">Technical Skills</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    My expertise in PLC programming, automation software, and industrial technologies.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">PLC Software Skills</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Mitsubishi</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Siemens</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Omron</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Schneider</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Selec</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Programming Languages & Tools</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Ladder, SCL & FBD</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">VB Scripting</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">C, C++, Java</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">SCADA & HMI</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Communication Protocols</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16">
+                <h3 class="text-2xl font-semibold mb-6 text-center">Communication Protocols</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <i class="fas fa-network-wired text-primary text-2xl mb-2"></i>
+                        <span class="font-medium">CC-Link</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <i class="fas fa-plug text-primary text-2xl mb-2"></i>
+                        <span class="font-medium">Device-Net</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <i class="fas fa-sitemap text-primary text-2xl mb-2"></i>
+                        <span class="font-medium">Ether-Cat</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <i class="fas fa-exchange-alt text-primary text-2xl mb-2"></i>
+                        <span class="font-medium">Profinet</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <i class="fas fa-wifi text-primary text-2xl mb-2"></i>
+                        <span class="font-medium">Modbus TCP/IP</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <i class="fas fa-bluetooth text-primary text-2xl mb-2"></i>
+                        <span class="font-medium">CAN Bus</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <i class="fas fa-ethernet text-primary text-2xl mb-2"></i>
+                        <span class="font-medium">Ethernet IP</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <i class="fas fa-layer-group text-primary text-2xl mb-2"></i>
+                        <span class="font-medium">IoT Protocol</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16">
+                <h3 class="text-2xl font-semibold mb-6 text-center">IIoT & IoT Skills</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-100">
+                        <h4 class="font-bold text-lg mb-2 text-blue-800">AWS IoT</h4>
+                        <ul class="text-gray-700 text-sm space-y-1">
+                            <li>• AWS IoT Core (device connection and data streaming)</li>
+                            <li>• AWS Cognito (secure authentication)</li>
+                            <li>• AWS DynamoDB (scalable IIoT data storage)</li>
+                            <li>• AWS S3 (data logging)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-100">
+                        <h4 class="font-bold text-lg mb-2 text-green-800">Development Tools</h4>
+                        <ul class="text-gray-700 text-sm space-y-1">
+                            <li>• Node-RED (flow-based IoT data orchestration)</li>
+                            <li>• JavaScript / Python (backend logic)</li>
+                            <li>• Real-time data acquisition and logging</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded-xl border border-purple-100">
+                        <h4 class="font-bold text-lg mb-2 text-purple-800">Protocols & Devices</h4>
+                        <ul class="text-gray-700 text-sm space-y-1">
+                            <li>• MC Protocol (direct PLC communication)</li>
+                            <li>• Modbus TCP/IP (data exchange)</li>
+                            <li>• Siemens S7-1200 Communication</li>
+                            <li>• ESP32 & Arduino Cloud</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold section-title">Featured Projects</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Showcasing significant automation projects and industrial solutions I've developed throughout my career.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-48 bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white">
+                        <i class="fas fa-boxes text-4xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">E-COM (Gurgaon) - Pre-Sorter</h3>
+                        <p class="text-gray-600 mb-4">
+                            Online Parcel Pre-sort system with 24 stations, 36 conveyors, and Cognex vision systems.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary text-white text-xs px-3 py-1 rounded-full">PLC Programming</span>
+                            <span class="bg-secondary text-white text-xs px-3 py-1 rounded-full">SCADA</span>
+                            <span class="bg-accent text-white text-xs px-3 py-1 rounded-full">Ethernet</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <button class="text-primary hover:text-secondary font-medium text-sm">
+                                <i class="fas fa-file-alt mr-1"></i> Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-48 bg-gradient-to-r from-green-500 to-emerald-600 flex items-center justify-center text-white">
+                        <i class="fas fa-dolly-flatbed text-4xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Express-Bees (Surat) - Bag Sorter</h3>
+                        <p class="text-gray-600 mb-4">
+                            Bag sorting system with servo motors and Siemens PLCs for different city deliveries.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary text-white text-xs px-3 py-1 rounded-full">Siemens PLC</span>
+                            <span class="bg-secondary text-white text-xs px-3 py-1 rounded-full">Servo Control</span>
+                            <span class="bg-accent text-white text-xs px-3 py-1 rounded-full">Industrial Automation</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <button class="text-primary hover:text-secondary font-medium text-sm">
+                                <i class="fas fa-file-alt mr-1"></i> Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-48 bg-gradient-to-r from-red-500 to-orange-600 flex items-center justify-center text-white">
+                        <i class="fas fa-wrench text-4xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Hero Pvt. Ltd. (Ludhiana) - MIG Welding</h3>
+                        <p class="text-gray-600 mb-4">
+                            Robotic welding cell with Panasonic robots and Mitsubishi PLCs for motorcycle manufacturing.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary text-white text-xs px-3 py-1 rounded-full">Robotics</span>
+                            <span class="bg-secondary text-white text-xs px-3 py-1 rounded-full">MIG Welding</span>
+                            <span class="bg-accent text-white text-xs px-3 py-1 rounded-full">CC-Link</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <button class="text-primary hover:text-secondary font-medium text-sm">
+                                <i class="fas fa-file-alt mr-1"></i> Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center text-white">
+                        <i class="fas fa-industry text-4xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Moon Light Pvt. Ltd. (Ludhiana) - Welding Cells</h3>
+                        <p class="text-gray-600 mb-4">
+                            Commissioning of 6 MIG and 1 spot welding robotic cells with servo-based fixtures.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary text-white text-xs px-3 py-1 rounded-full">Industrial Automation</span>
+                            <span class="bg-secondary text-white text-xs px-3 py-1 rounded-full">Yaskawa Robots</span>
+                            <span class="bg-accent text-white text-xs px-3 py-1 rounded-full">Control Systems</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <button class="text-primary hover:text-secondary font-medium text-sm">
+                                <i class="fas fa-file-alt mr-1"></i> Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-48 bg-gradient-to-r from-yellow-500 to-amber-600 flex items-center justify-center text-white">
+                        <i class="fas fa-cogs text-4xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Tata Motors - Assembly Line</h3>
+                        <p class="text-gray-600 mb-4">
+                            Automated assembly line for automotive components with integrated conveyor and robotic systems.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary text-white text-xs px-3 py-1 rounded-full">PLC Programming</span>
+                            <span class="bg-secondary text-white text-xs px-3 py-1 rounded-full">Robotics</span>
+                            <span class="bg-accent text-white text-xs px-3 py-1 rounded-full">Industrial Automation</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <button class="text-primary hover:text-secondary font-medium text-sm">
+                                <i class="fas fa-file-alt mr-1"></i> Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-48 bg-gradient-to-r from-teal-500 to-cyan-600 flex items-center justify-center text-white">
+                        <i class="fas fa-warehouse text-4xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Amazon Logistics - Warehouse Automation</h3>
+                        <p class="text-gray-600 mb-4">
+                            Fully automated warehouse solution with robotic picking, sorting, and storage systems.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary text-white text-xs px-3 py-1 rounded-full">SCADA</span>
+                            <span class="bg-secondary text-white text-xs px-3 py-1 rounded-full">Robotic Systems</span>
+                            <span class="bg-accent text-white text-xs px-3 py-1 rounded-full">IoT Integration</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <button class="text-primary hover:text-secondary font-medium text-sm">
+                                <i class="fas fa-file-alt mr-1"></i> Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- IIoT Project -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-48 bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white">
+                        <i class="fas fa-cloud text-4xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">IIoT Project - Remote Monitoring</h3>
+                        <p class="text-gray-600 mb-4">
+                            Cloud-based IIoT solution with real-time data logging, monitoring, and visualization using AWS IoT Core and Node-RED.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary text-white text-xs px-3 py-1 rounded-full">AWS IoT</span>
+                            <span class="bg-secondary text-white text-xs px-3 py-1 rounded-full">Node-RED</span>
+                            <span class="bg-accent text-white text-xs px-3 py-1 rounded-full">Real-time Monitoring</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://05station.s3.ap-southeast-1.amazonaws.com/manual-operation.html" target="_blank" class="text-primary hover:text-secondary font-medium text-sm">
+                                <i class="fas fa-external-link-alt mr-1"></i> Demo 1
+                            </a>
+                            <a href="https://fx5u-iot-2040.s3.ap-southeast-1.amazonaws.com/Remote.html" target="_blank" class="text-primary hover:text-secondary font-medium text-sm">
+                                <i class="fas fa-external-link-alt mr-1"></i> Demo 2
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold section-title">Contact Information</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Reach out to discuss automation projects, consulting opportunities, or collaborations.
+                </p>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-6">Professional Details</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Address</h4>
+                                    <p class="text-gray-600">Supertech-Eco-vill-01 Noida Up ,Pin 201301</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Email</h4>
+                                    <p class="text-gray-600">Prabhumehra44@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Mobile</h4>
+                                    <p class="text-gray-600">+91 8569984654</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-6">Personal Information</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-gray-600">Date of Birth:</p>
+                                <p class="font-medium">09 March 1994</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-600">Father's Name:</p>
+                                <p class="font-medium">Kalyan Singh Mehra</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-600">Languages Known:</p>
+                                <p class="font-medium">Hindi, Kumauni, English</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-600">Marital Status:</p>
+                                <p class="font-medium">Married</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-600">Nationality:</p>
+                                <p class="font-medium">Indian</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <span class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Prabhakar Mehra</span>
+                    <p class="text-gray-400 mt-2">Automation Engineer & PLC Programmer</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-email text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Prabhakar Mehra. All rights reserved.</p>
+                <p class="mt-2">Place: Noida | Date: 22/01/2023</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                mobileMenu.classList.add('hidden'); // Close mobile menu after clicking
+            }
+        }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (event) => {
+            const isClickInsideNav = document.querySelector('nav').contains(event.target);
+            if (!isClickInsideNav && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Image upload functionality
+        function openFileSelector() {
+            document.getElementById('imageUpload').click();
+        }
+
+        function updateImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    document.getElementById('profileImage').src = e.target.result;
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</body>
+</html>
